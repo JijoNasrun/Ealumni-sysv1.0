@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 /* include db connection file */
@@ -7,16 +8,26 @@ include("include/dbconn.php");
 	{
 		
 		echo "<script language='javascript'>
-	          alert('You have not yet registered!')
+			  alert('Your data isn't available)
 	          location = 'email.php';
 	          </script>";
 		exit();
 	}
+	function err2()
+	{
+		
+		echo "<script language='javascript'>
+			  alert('You have already registered! Please login using your own password')
+	          location = 'login.php';
+	          </script>";
+		exit();
+	}
+	
 	
 	function succ()
 	{
 	
-		header("location: login.php");
+		header("location: firstlogin.php");
 		exit();
 	}
 	
@@ -35,7 +46,14 @@ if(isset($_POST['submit']))
 				 
         	if($check != 0)
         	{
-				succ();
+				$row=mysql_fetch_array($rst);
+				$pass = $row['password'];
+				if(!empty($pass))
+				{
+					err2();
+				}	
+				else
+					succ();
 				
 			}	
 			else

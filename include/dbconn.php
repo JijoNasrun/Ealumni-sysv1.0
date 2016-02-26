@@ -1,7 +1,7 @@
 <?php
 /* php & mysql db connection file */
 $user = "root";//mysql username
-$pass = "";//mysql password
+$pass = "12345";//mysql password
 $host = "localhost";//server name or ip addres
 $dbname = "ealumn-sys";//your db name
 

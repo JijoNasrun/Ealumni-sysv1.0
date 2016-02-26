@@ -1,3 +1,8 @@
+# Database File
+DATABASE
+include/dbconn.php
+staff/include/dbconn.php
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

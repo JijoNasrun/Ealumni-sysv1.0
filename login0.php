@@ -44,7 +44,7 @@ if(isset($_POST['submit']))
 	function succ()
 	{
 	
-		header("location: biodata.php");
+		header("location: tab.php");
 		exit();
 	}
 	

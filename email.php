@@ -12,6 +12,9 @@
 <!--[if lt IE 9]><script src="js/modernizr.custom.js"></script><![endif]-->
 <script src="js/jquery.flexslider-min.js"></script>
 <script src="js/functions.js"></script>
+<script src="alertify.js/lib/alertify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="alertify.js/themes/alertify.css" />
+<link rel="stylesheet" type="text/css" href="alertify.js/themes/alertify.default.css" />
 
 <link href="check/css/style.css" rel='stylesheet' type='text/css' />
     <meta name="viewport" content="width=device-width, initial-scale=1">

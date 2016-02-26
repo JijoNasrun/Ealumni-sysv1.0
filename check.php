@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all">
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
 <script src="js/jquery-1.8.0.min.js"></script>
+<script src="alertify.js/lib/alertify.min.js"></script>
+<link rel="stylesheet" href="alertify.js/themes/alertify.css" />
+<link rel="stylesheet" href="alertify.js/themes/alertify.default.css" />
 <!--[if lt IE 9]><script src="js/modernizr.custom.js"></script><![endif]-->
 
 <script src="js/functions.js"></script>
