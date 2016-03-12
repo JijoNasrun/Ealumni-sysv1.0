@@ -66,6 +66,22 @@
     <script type="text/javascript" src="vendor/plugins/moment/moment.min.js"></script> -->
 
    
+<script type="text/javascript">
+  $(document).ready(function() 
+    {
+        $("#staff").hide();
+       
+    });
+
+</script>
+<script>
+function show(){$("#staff").show();}
+</script>
+<script>
+function hide(){$("#staff").hide();}
+</script>
+
+
     <script type="text/javascript">
         jQuery(document).ready(function() {
 
@@ -148,7 +164,7 @@
         <div class="col-md-12">
             <div class="panel">
                 <div class="panel-heading">
-                    <span class="panel-title"><b>Alumni Information</b></span>
+                    <span class="panel-title"><b>Alumni Information</b></span><div class="right"><a href="logout.php">Logout</a></div>
                 </div>
 
                 <div class="panel-body">

@@ -1,6 +1,29 @@
+<script type="text/javascript">
+        function getSkillDescription(val) {
+        $.ajax({
+        type: "POST",
+        url: "get_skilldescription.php",
+        data:'skill_id='+val,
+        success: function(data){
+            $("#skilldes").html(data);
+        }
+        });
+       }
+     </script>
 <?php 
+ function runQuery($query) {
+        $result = mysql_query($query);
+        while($row=mysql_fetch_assoc($result)) {
+            $resultset[] = $row;
+        }       
+        if(!empty($resultset))
+            return $resultset;
+    }
      
+        
         $kp = $_SESSION["id"];
+        $query = "SELECT * FROM skill_category";
+        $results = runQuery($query);
 
          if(isset($_POST['update'])){
 
@@ -14,7 +37,7 @@
                     $certexp1 = $certexp[$i];
                     
 
-                    $retval = mysql_query("INSERT INTO professionalism (no_kp,SkillID,certexp) VALUES('$kp','$skillcat1','$certexp1')");
+                    $retval = mysql_query("INSERT INTO professionalism (no_kp,SkillID,certexp,skilldes) VALUES('$kp','$skillcat1','$certexp1','$skilldes1')");
                     if(! $retval )
                         {
                            die('Could not update data: ' . mysql_error());
@@ -48,7 +71,7 @@
 
                             <div class="panel-body">
                                 <form class="form-horizontal" role="form" method="post" action="<?php $_PHP_SELF ?>">
-                                        <label for="inputStandard" class="control-label">Academic Achievement from Other Institutions</label><p>
+                                        <label for="inputStandard" class="control-label">Professional Skill</label><p>
                                     <div class="row">   
                                         <!-- .section-divider -->
                                         <div class="col-xs-8">
@@ -73,9 +96,15 @@
                                                             <label class="col-lg-3 control-label">Skill Category</label>
                                                             <div class="col-lg-8">
                                                                 <label class="field select">
-                                                                    <select id="skillcat" name="skillcat[]" class="form-control">
-                                                                    <option value="1">Networking</option>
-                                                                    <option value="2">Database(Oracle)</option>
+                                                                    <select id="skillcat" name="skillcat[]" class="form-control" onChange="getSkillDescription(this.value)">
+                                                                        <option value ="">SELECT SKILL CATEGORY</option>
+                                                                    <?php 
+                                                                            foreach($results as $displayCategory) {
+                                                                                ?>
+                                                                             <option value="<?php echo $displayCategory["SkillCatID"]; ?>"><?php echo $displayCategory["SkillCatName"]; ?></option>
+
+                                                                    <?php }         
+                                                                    ?>
                                                                     </select>
                                                                     <i class="arrow"></i>
                                                                 </label>
@@ -86,13 +115,6 @@
                                                             <div class="col-lg-8">
                                                                 <label class="field select">
                                                                     <select id="skilldes" name="skilldes[]" class="form-control">
-                                                                    <option value="1">CCNA</option>
-                                                                    <option value="2">CCNP</option>
-                                                                    <option value="3">CCDE</option>
-                                                                    <option value="4">CCIE</option>
-                                                                    <option value="5">CCAR</option>
-                                                                    <option value="6">ORACLE APPLICATION CERTIFICATION</option>
-                                                                     <option value="7">ORACLE DATABASE CERTIFICATION</option>
                                                                     
                                                                     </select>
                                                                     <i class="arrow"></i>

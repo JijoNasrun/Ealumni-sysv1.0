@@ -1,3 +1,4 @@
+
   <?php
           
         $kp = $_SESSION["id"];
@@ -75,7 +76,7 @@
                                     
                                     <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Name</label>
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-5">
                                             <input type="text" id="name" class="form-control" name="name" disabled value="<?php echo $display_names;?>">
                                         </div>
                                     </div>
@@ -99,13 +100,13 @@
 
                                     <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Birth Date</label>
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-2">
                                             <input type="text" id="datepicker" class="form-control" name="birthdate">
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Gender</label>
-                                        <div class="col-lg-8">
+                                    
+                                    
+                                        <label class="col-lg-2 control-label">Gender</label>
+                                        <div class="col-lg-2">
                                             <label class="field select">
                                             <?php
                                                 // $kp is no kad pengenalan capture from session id
@@ -774,37 +775,37 @@
                                         <div class="col-lg-6">      
                                                 <div class="col-lg-3">
                                                     <div class="radio-custom square mb5">
-                                                        <input type="radio" id="radioExample13" name="radioExample">
-                                                        <label for="radioExample13">Yes</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="radio-custom square mb5">
-                                                        <input type="radio" id="radioExample14" name="radioExample">
-                                                        <label for="radioExample14">No</label>
+                                                        <input type="radio" id="radioExample1" name="radioExample" onClick="show();">
+                                                        <label for="radioExample1">Yes</label>
+                                                    
+                                                        <input type="radio" id="radioExample2" name="radioExample" onClick="hide();">
+                                                        <label for="radioExample2">No</label>
                                                     </div>
                                                 </div>
                                          </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group" id="staff">
+                                        <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Staff Number</label>
                                         <div class="col-lg-8">
                                             <input type="text" id="staff_num" name="staff_num"class="form-control">
                                         </div>
-                                    </div>
+                                        </div>
 
-                                    <div class="form-group">
+                                        <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Department</label>
                                         <div class="col-lg-8">
                                             <input type="text" id="department" name="department" class="form-control">
                                         </div>
-                                    </div>
-                                    <div class="form-group">
+                                        </div>
+                                    
+                                        <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Campus</label>
                                         <div class="col-lg-8">
                                             <input type="text" id="campus" name="campus" class="form-control">
                                         </div>
+                                    </div>
                                     </div>
 
                                     <div class="form-group">

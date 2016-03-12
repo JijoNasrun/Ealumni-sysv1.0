@@ -113,7 +113,7 @@
                                             <p>(Remove only checked item)</p>
                                         </div>
                                        <p>
-                                         <table id="dataTable"  class="table table-striped table-hover" cellspacing="0" width="100%">
+                                         <table id="dataTable" class="table table-striped table-hover" cellspacing="0" width="100%">
                                               <tbody> 
                                                 <tr>
                                                   <p>
@@ -386,7 +386,7 @@
         function addRow(tableID) {
             var table = document.getElementById(tableID);
             var rowCount = table.rows.length;
-            if(rowCount < 10 ){                           // limit the user from creating fields more than your limits
+            if(rowCount < 5 ){                           // limit the user from creating fields more than your limits
                 var row = table.insertRow(rowCount);
                 var colCount = table.rows[0].cells.length;
                 for(var i=0; i<colCount; i++) {
@@ -394,7 +394,7 @@
                     newcell.innerHTML = table.rows[0].cells[i].innerHTML;
                 }
             }else{
-                 alert("Maximum is 10.");
+                 alert("Maximum is 5.");
                        
             }
         };

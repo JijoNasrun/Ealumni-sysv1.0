@@ -1,5 +1,16 @@
     <?php
-         
+
+        function runQuery($query) {
+        $result = mysql_query($query);
+        while($row=mysql_fetch_assoc($result)) {
+            $resultset[] = $row;
+        }       
+        if(!empty($resultset))
+            return $resultset;
+    }
+
+         $query = "SELECT * FROM organization_type";
+         $results = runQuery($query);
          
          $kp=$_SESSION["id"];
 
@@ -71,6 +82,7 @@
                                                         <select id="status" name="status" class="form-control">
                                                             <option value="Active">Active</option>
                                                             <option value="Inactive">Inactive</option>
+                                                            <option value="Inactive">Furthering Study</option>
                                                         </select>
                                                         <i class="arrow"></i>
                                                     </label>
@@ -99,7 +111,7 @@
 
                                     <div class="form-group">
                                         <label class="col-lg-3 control-label">Year Start</label>
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-2">
                                             <label class="field select">
                                                         <select id="year" name="year" class="form-control">
                                                             <option value="2025">2025</option>
@@ -232,11 +244,9 @@
                                                         <i class="arrow"></i>
                                                     </label>
                                         </div>
-                                    </div>
-
-                                    <div class="form-group">
+                                    
                                         <label class="col-lg-3 control-label">Salary Range</label>
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-3">
                                             <label class="field select">
                                                         <select id="salary" name="salary" class="form-control">
                                                             <option value="1">0</option>
@@ -254,20 +264,23 @@
 
                                     <div class="form-group">
                                         <label class="col-lg-3 control-label">Organization Type</label>
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-3">
                                             <label class="field select">
                                                         <select id="type_id" name="type_id" class="form-control">
-                                                            <option value="1">Goverment</option>
-                                                            <option value="2">NGO</option>
-                                                            <option value="3">Private</option>
+                                                            <?php
+                                                                     foreach($results as $display_orgtype) {
+                                                                        ?>
+                                                                        <option value="<?php echo $display_orgtype["TypeID"]; ?>"><?php echo $display_orgtype["TypeName"]; ?></option>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                            ?>
                                                         </select>
                                                         <i class="arrow"></i>
                                                     </label>
                                         </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Organization Name</label>
+                                    
+                                        <label class="col-lg-2 control-label">Organization Name</label>
                                         <div class="col-lg-3">
                                             <input type="text" id="organizationName" name="organizationName" class="form-control" >
                                         </div>
@@ -578,14 +591,12 @@
 
                                     <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Organization Telephone</label>
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-3">
                                             <input type="text" id="tel" name="tel" class="form-control">
                                         </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="inputStandard" class="col-lg-3 control-label">Organization Fax</label>
-                                        <div class="col-lg-8">
+                                    
+                                        <label for="inputStandard" class="col-lg-2 control-label">Organization Fax</label>
+                                        <div class="col-lg-3">
                                             <input type="text" id="fax" name="fax" class="form-control">
                                         </div>
                                     </div>
