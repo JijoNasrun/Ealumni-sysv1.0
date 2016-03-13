@@ -1,4 +1,3 @@
-
 <?php 
  function runQuery($query) {
         $result = mysql_query($query);
@@ -102,7 +101,18 @@
                                                             <div class="col-lg-8">
                                                                 <label class="field select">
                                                                     <select id="skilldes" name="skilldes[]" class="form-control">
-                                                                    
+
+                                                                        <option value="0">Please Choose</option>
+                                                                    <?php
+                                                                     $query_skill=mysql_query('SELECT * FROM skill');
+                                                                     while($ps=mysql_fetch_array($query_skill))
+                                                                     {
+                                                                    ?>
+                                                                        <option value="<?php echo $ps['SkillID'] ?>"><?php echo $ps['SkillDescription'] ?></option>
+                                                                    <?php    
+                                                                     }
+                                                                    ?>
+
                                                                     </select>
                                                                     <i class="arrow"></i>
                                                                 </label>
@@ -307,10 +317,7 @@
         };
 
 
-        $(document).ready(function() {
-          $(".js-example-basic-single").select2();
-        });
-
+       
 
 
        //  function getSkillDescription(val) {
@@ -333,6 +340,11 @@
 
         //any time the amount changes
         $(document).ready(function() {
+
+          $("#skilldes").select2();
+       
+
+
             $('input[name=BX_QTY],input[name=BX_UnitPrice]').change(function(e) {
                 var total = 0;
                 var $row = $(this).parent();

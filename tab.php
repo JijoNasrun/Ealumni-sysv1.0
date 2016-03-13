@@ -35,6 +35,9 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/favicon.ico">
 
+    <!-- jquery select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>   
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -65,7 +68,8 @@
     <script type="text/javascript" src="vendor/plugins/globalize/src/core.js"></script>
     <script type="text/javascript" src="vendor/plugins/moment/moment.min.js"></script> -->
 
-   
+    
+
 <script type="text/javascript">
   $(document).ready(function() 
     {
