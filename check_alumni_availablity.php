@@ -8,7 +8,7 @@ if($_REQUEST)
 			  WHERE  no_kp = '".strtolower($ic)."'";
 			  
 	
-	$results = mysql_query( $query) or die('ok');
+	$results = mysql_query( $query) or die('Database Connection Failed');
 	
 	
 	if(mysql_num_rows(@$results) > 0) // not available

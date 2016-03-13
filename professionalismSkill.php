@@ -1,15 +1,4 @@
-<script type="text/javascript">
-        function getSkillDescription(val) {
-        $.ajax({
-        type: "POST",
-        url: "get_skilldescription.php",
-        data:'skill_id='+val,
-        success: function(data){
-            $("#skilldes").html(data);
-        }
-        });
-       }
-     </script>
+
 <?php 
  function runQuery($query) {
         $result = mysql_query($query);
@@ -56,8 +45,6 @@
          
 ?>
 
-
-
             <!-- Begin: Content -->
             <div id="content" class="animated fadeIn">
                 <div class="row">
@@ -88,7 +75,7 @@
                                        <p>
                                          <table id="dataTable"  class="table table-striped table-hover" cellspacing="0" width="100%">
                                               <tbody> 
-                                                <tr>
+                                                <tr id="row0">
                                                   <p>
                                                     <td><input type="checkbox" required="required" name="chk[]" unchecked="" /></td>
                                                     <td>
@@ -96,11 +83,11 @@
                                                             <label class="col-lg-3 control-label">Skill Category</label>
                                                             <div class="col-lg-8">
                                                                 <label class="field select">
-                                                                    <select id="skillcat" name="skillcat[]" class="form-control" onChange="getSkillDescription(this.value)">
+                                                                    <select id="skillcat" name="skillcat[]" class="form-control" >
                                                                         <option value ="">SELECT SKILL CATEGORY</option>
                                                                     <?php 
                                                                             foreach($results as $displayCategory) {
-                                                                                ?>
+                                                                    ?>
                                                                              <option value="<?php echo $displayCategory["SkillCatID"]; ?>"><?php echo $displayCategory["SkillCatName"]; ?></option>
 
                                                                     <?php }         
@@ -288,10 +275,12 @@
             var rowCount = table.rows.length;
             if(rowCount < 20){                           // limit the user from creating fields more than your limits
                 var row = table.insertRow(rowCount);
+
                 var colCount = table.rows[0].cells.length;
                 for(var i=0; i<colCount; i++) {
                     var newcell = row.insertCell(i);
                     newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+                    row.id = "row" + rowCount;
                 }
             }else{
                  alert("Maximum is 20.");
@@ -316,6 +305,31 @@
                 }
             }
         };
+
+
+        $(document).ready(function() {
+          $(".js-example-basic-single").select2();
+        });
+
+
+
+       //  function getSkillDescription(val) {
+       //      var $this = $('tr');
+       //      var trid = $this.attr('id');
+       //      alert("TR ID " + trid);
+
+            
+       //  $.ajax({
+       //  type: "POST",
+       //  url: "get_skilldescription.php",
+       //  data:'skill_id='+val,
+       //  success: function(data){
+       //      $("#skilldes").html(data);
+       //  }
+       //  });
+       // }
+
+
 
         //any time the amount changes
         $(document).ready(function() {
