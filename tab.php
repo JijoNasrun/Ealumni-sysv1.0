@@ -64,10 +64,6 @@
     <script type="text/javascript" src="vendor/plugins/globalize/src/core.js"></script>
     <script type="text/javascript" src="vendor/plugins/moment/moment.min.js"></script> -->
 
-   <!--  jquery local -->
-   <link href="path/to/select2.min.css" rel="stylesheet" />
-   <script src="path/to/select2.min.js"></script>
-
 <script type="text/javascript">
   $(document).ready(function() 
     {

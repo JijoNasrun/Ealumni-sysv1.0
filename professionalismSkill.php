@@ -82,7 +82,7 @@
                                                             <label class="col-lg-3 control-label">Skill Category</label>
                                                             <div class="col-lg-8">
                                                                 <label class="field select">
-                                                                    <select id="skillcat" name="skillcat[]" class="form-control" >
+                                                                    <select id="skillcat" name="skillcat[]" class="form-control" onChange="getSkillDescription(this.value)"  >
                                                                         <option value ="">SELECT SKILL CATEGORY</option>
                                                                     <?php 
                                                                             foreach($results as $displayCategory) {
@@ -99,21 +99,19 @@
                                                         <div class="form-group">
                                                             <label class="col-lg-3 control-label">Skill Description</label>
                                                             <div class="col-lg-8">
-                                                                <label class="field select">
+                                                                <label class="field select">                                                                
                                                                     <select id="skilldes" name="skilldes[]" class="form-control">
-
-                                                                        <option value="0">Please Choose</option>
-                                                                    <?php
-                                                                     $query_skill=mysql_query('SELECT * FROM skill');
-                                                                     while($ps=mysql_fetch_array($query_skill))
-                                                                     {
-                                                                    ?>
-                                                                        <option value="<?php echo $ps['SkillID'] ?>"><?php echo $ps['SkillDescription'] ?></option>
-                                                                    <?php    
-                                                                     }
-                                                                    ?>
-
+                                                                    
                                                                     </select>
+                                                                    <?php
+                                                                     // $query_skill=mysql_query('SELECT * FROM skill');
+                                                                     // while($ps=mysql_fetch_array($query_skill))
+                                                                     // {
+                                                                    ?>
+                                                                        <!-- <option value="<?php //echo $ps['SkillID'] ?>"><?php// echo $ps['SkillDescription'] ?></option> -->
+                                                                    <?php    
+                                                                     // }
+                                                                    ?>
                                                                     <i class="arrow"></i>
                                                                 </label>
                                                             </div>
@@ -154,8 +152,13 @@
             </div>
             <!-- End: Content -->
 
+        <link href="dist/css/select2.min.css" rel="stylesheet" />
+        <script src="dist/js/select2.min.js"></script>
         <script type="text/javascript">
         jQuery(document).ready(function() {
+
+             // $("#skilldes").select2();
+                                                                   
 
             // "use strict";
 
@@ -291,6 +294,7 @@
                     var newcell = row.insertCell(i);
                     newcell.innerHTML = table.rows[0].cells[i].innerHTML;
                     row.id = "row" + rowCount;
+                    row.class = "row" + rowCount;
                 }
             }else{
                  alert("Maximum is 20.");
@@ -317,34 +321,28 @@
         };
 
 
-       
+        function getSkillDescription(val) {
 
+            var $this = $('#skilldes').closest('tr');
+            var trid = $this.attr('id');
+            // alert("TR ID " + trid);
 
-       //  function getSkillDescription(val) {
-       //      var $this = $('tr');
-       //      var trid = $this.attr('id');
-       //      alert("TR ID " + trid);
-
-            
-       //  $.ajax({
-       //  type: "POST",
-       //  url: "get_skilldescription.php",
-       //  data:'skill_id='+val,
-       //  success: function(data){
-       //      $("#skilldes").html(data);
-       //  }
-       //  });
-       // }
+            $.ajax({
+                type: "POST",
+                url: "get_skilldescription.php",
+                data:'skill_id='+val,
+                success: function(data){
+                    $("#"+trid+", #skilldes").append(data);
+                }
+            });
+       }
 
 
 
         //any time the amount changes
         $(document).ready(function() {
 
-          $("#skilldes").select2();
-       
-
-
+         
             $('input[name=BX_QTY],input[name=BX_UnitPrice]').change(function(e) {
                 var total = 0;
                 var $row = $(this).parent();
