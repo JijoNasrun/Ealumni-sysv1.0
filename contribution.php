@@ -1,6 +1,6 @@
     <?php 
 
-        session_start();
+     
        
       
         $kp = $_SESSION["id"];
@@ -37,7 +37,7 @@
                                 <form class="form-horizontal" role="form" method="post" action="<?php $_PHP_SELF ?>">
                                     <label class=" col-lg-2 control-label mb15">I can contribute the following to FSKM (please tick)</label>
                                             <div class="form-group">
-                                                <div class="col-lg-8 pl15">
+                                                <div class="col-lg-9 pl15">
                                                     <div class="checkbox-custom mb5">
                                                         <input type="checkbox" id="checkboxDefault1" name="jawapan[]" value="Invited Speaker/Lecture">
                                                         <label for="checkboxDefault1">Invited Speaker/Lecture</label>
@@ -78,21 +78,24 @@
                                                         <input type="checkbox" id="checkboxExample10" name="jawapan[]" value="Academic Questionnaire Respondent">
                                                         <label for="checkboxExample10">Academic Questionnaire Respondent</label>
                                                     </div>
-                                                    <div class="checkbox-custom mb5">
-                                                        <input type="checkbox" id="checkboxExample11" name="jawapan[]" value="others">
-                                                        <label for="checkboxExample11">Others</label>
+                                                    <div>
+                                                        <label class="col-lg-1 control-label" for="textArea2">Others</label>
+                                                        <div class="col-lg-9">
+                                                            <textarea class="form-control" id="certexp" name="jawapan[]" rows="1"></textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <div class="col-lg-5"></div>
-                                                <div class="col-lg-2">
-                                                    <button type="submit" class="btn btn-rounded btn-danger btn-block" name="update" id="update" value="Update">EDIT</button>
-                                                </div>
                                                 
+                                                <div class="col-lg-5">
+                                                </div>
                                                 <div class="col-lg-2">
-                                                    <a href="?content=6"><button type="button" class="btn btn-rounded btn-danger btn-block">NEXT</button></a>
+                                                    <button type="submit" class="btn btn-rounded btn-alert btn-block" name="update" id="update" value="Update">UPDATE</button>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <a href="?content=6"><button type="button" class="btn btn-rounded btn-alert btn-block">NEXT</button></a>
                                                 </div>
 
                                                 <div class="col-lg-5"></div>

@@ -27,7 +27,7 @@
 
     <div class="main">
     <form name="form" method="post" action="firstlogin0.php" autocomplete="off">
-        <h1><span>e-Alumni</span> <lable> Login </lable> </h1>
+        <h1><span>e-Alumni</span> <lable> Registration </lable> </h1>
         <div class="inset">
           <p>
             <label for="password">IC Number :</label>
@@ -35,17 +35,14 @@
           </p>
                 <p>
             <label for="password">Password :</label>
-            <input type="password" placeholder="Password" name="password" required/>
+            <input type="password" placeholder="Use IC as password" name="password" required/>
           </p>
-          <p>
-            <input type="checkbox" name="remember" id="remember">
-            <label for="remember">Remember me!</label>
-          </p>
+          
        </div>
    
         <p class="p-container">
-          <span><a href="#">Forgot password ?</a></span>
-          <input type="submit" name="submit" id="submit"  value=" Log in " >
+          
+          <input type="submit" name="submit" id="submit"  value=" Register " >
         </p>
     </form>
   </div> 

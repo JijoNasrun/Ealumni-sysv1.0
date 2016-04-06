@@ -14,6 +14,15 @@
      </script>
 
 
+<script type = "text/javascript">
+     function getAcademicUitm(){
+        $.ajax({ type: "POST", url : "get_UitmQualification.php", success: function(data){$("table1").html(data);
+        }
+        });
+     }
+     </script>
+
+
 
 
     <?php
@@ -45,13 +54,13 @@
             $program2=$_POST['program2'];//check
             $university=$_POST['university'];//check
             $yearG2=$_POST['yearG2'];//check
-
+            
                 for($i=0, $count = count($level1);$i<$count;$i++) {
                     $level  = $level1[$i];
                     $program = $program1[$i];
                     $mode = $mode1[$i];
                     $year = $yearG1[$i];
-
+                    if (!empty($level)&&(!empty($mode))&&(!empty($year))){
                      $retval = mysql_query("INSERT INTO uitm_qualification (no_kp,level,mode,programID,yearGraduate) VALUES('$kp','$level','$mode','$program','$year')");
                       if(! $retval )
                         {
@@ -62,14 +71,16 @@
                         
 
                 }
-                //check
+            }
+
+              
                 for($j=0, $count = count($level2);$j<$count;$j++) {
                     $levelnu  = $level2[$j];
                     $programnu = $program2[$j];
                     $uni = $university[$j];
                     $yearnu = $yearG2[$j];
-
-                     $retvals = mysql_query("INSERT INTO non_uitm_qualification (no_kp,level,university,yearGraduate) VALUES('$kp','$level','$uni','$yearnu')");
+                    if (!empty($levelnu)&&(!empty($programnu))&&(!empty($uni))&&(!empty($yearnu))){ 
+                     $retvals = mysql_query("INSERT INTO non_uitm_qualification (no_kp,level,university,yearGraduate,program) VALUES('$kp','$levelnu','$uni','$yearnu','$programnu')");
                       if(! $retvals )
                         {
                            die('Could not update data: ' . mysql_error());
@@ -78,9 +89,14 @@
                         
 
                 }
+            }
 
         }
-        else {}
+        $query3 = "SELECT * FROM uitm_qualification WHERE no_kp like '$kp' order by yearGraduate";
+        $results3 = runQuery($query3);
+
+        $query4 = "SELECT * FROM non_uitm_qualification WHERE no_kp like '$kp'order by yearGraduate";
+        $results4 =runQuery($query4);
            
          
             ?>
@@ -99,31 +115,14 @@
                             <div class="panel-body">
                                 <form class="form-horizontal" role="form" method="post" action="<?php $_PHP_SELF ?>">
                                     <label for="inputStandard" class="control-label">Academic Achievement from UiTM (FSKM)</label><p>
-                                    <div class="row">   
-                                        <!-- .section-divider -->
-                                        <div class="col-xs-8">
-                                        <div class="col-xs-2">
-                                            <button type="button" value="Add Passenger" onClick="addRow('dataTable')" 
-                                            class="btn btn-rounded btn-danger btn-block">Add</button>
-                                        </div>
-                                        <div class="col-xs-3">
-                                            <button type="button" value="Remove Passenger" onClick="deleteRow('dataTable')"
-                                            class="btn btn-rounded btn-danger btn-block">Remove</button>
-                                        </div>
-                                            <p>(Remove only checked item)</p>
-                                        </div>
+                                    
                                        <p>
-                                         <table id="dataTable" class="table table-striped table-hover" cellspacing="0" width="100%">
-                                              <tbody> 
-                                                <tr>
-                                                  <p>
-                                                    <td><input type="checkbox" required="required" name="chk[]" unchecked="" /></td>
-                                                    <td>
-                                                        <div class="form-group">
+                                         <div class="form-group">
                                                             <label class="col-lg-3 control-label">Level</label>
                                                             <div class="col-lg-8">
                                                                 <label class="field select">
                                                                     <select id="level1" name="level1[]" class="form-control" onChange="getProgram(this.value);">
+                                                                        <option value="">Select Level</option>
                                                                     <?php
                                                                         foreach($results as $display_level) {
                                                                         ?>
@@ -141,7 +140,7 @@
                                                             <div class="col-lg-8">
                                                                 <label class="field select">
                                                                 <select id="program1" name="program1[]" class="form-control">
-                                                                
+                                                                    <option value="">Select Program</option>
                                                                 </select>
                                                                 <i class="arrow"></i>
                                                                 </label>
@@ -152,6 +151,7 @@
                                                             <div class="col-lg-8">
                                                                 <label class="field select">
                                                                 <select id="mode1" name="mode1[]" class="form-control">
+                                                                    <option value="">Select Mode</option>
                                                                     <option value="Full-Time">Full-Time</option>
                                                                     <option value="Part-Time">Part-Time</option>
                                                                 </select>
@@ -165,39 +165,46 @@
                                                                 <input type="text" id="yearG1" name="yearG1[]" class="form-control">
                                                             </div>
                                                         </div>
-                                                    </td>
-                                                </p>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                        <div>
+                                                        <center>
+                                                        <table id="table1">
+                                                            <tr>
+                                                                <td>Level</td><td>&nbsp</td>
+                                                                <td>Mode</td><td>&nbsp</td>
+                                                                <td>Program</td><td>&nbsp</td>
+                                                                <td>Year Graduate</td><td>&nbsp</td>
+                                                            </tr>
+                                                            <?php
+                                                                foreach($results3 as $dq) {
+                                                                    $programid2=$dq["ProgramID"];
+                                                                    $query6 = mysql_query("SELECT * FROM program where ProgramID ='$programid2'");
+                                                                    $result6 = mysql_fetch_array($query6);
 
+                                                            ?>
+                                                                <tr><?php $qid=$dq['qualification_id'] ?>
+                                                                <td><?php echo $dq["level"]?></td><td>&nbsp</td>
+                                                                <td><?php echo $dq["mode"]?></td><td>&nbsp</td>
+                                                                <td><?php echo $result6["ProgramName"];$pid = $dq["ProgramID"];?></td><td>&nbsp</td>
+                                                                <td><?php echo $dq["yearGraduate"]?></td><td>&nbsp</td>
+                                                                <td><a href="update_uitm.php?id=<?=$qid?>">Update</a></td>
+                                                            </tr>
+
+                                                            <?php
+                                                                } ?>
+                                                        </table>
+                                                    </center>
+                                                    </div>
+                                        </div>
+                                        <div class="panel-body">
                                         <label for="inputStandard" class="control-label">Academic Achievement from Other Institutions</label><p>
                                     <div class="row">   
-                                        <!-- .section-divider -->
-                                        <div class="col-xs-8">
-                                        <div class="col-xs-2">
-                                            <button type="button" value="Add Passenger" onClick="addRow('dataTable2')" 
-                                            class="btn btn-rounded btn-danger btn-block">Add</button>
-                                        </div>
-                                        <div class="col-xs-3">
-                                            <button type="button" value="Remove Passenger" onClick="deleteRow('dataTable2')"
-                                            class="btn btn-rounded btn-danger btn-block">Remove</button>
-                                        </div>
-                                            <p>(Remove only checked item)</p>
-                                        </div>
-                                       <p>
-                                         <table id="dataTable2"  class="table table-striped table-hover" cellspacing="0" width="100%">
-                                              <tbody> 
-                                                <tr>
-                                                  <p>
-                                                    <td><input type="checkbox" required="required" name="chk[]" unchecked="" /></td>
-                                                    <td>
+              
                                                         <div class="form-group">
                                                             <label class="col-lg-3 control-label">Level</label>
                                                             <div class="col-lg-8">
                                                                 <label class="field select">
                                                                     <select id="level2" name="level2[]" class="form-control">
+                                                                    <option value="">Select Level</option>
                                                                     <option value="PhD">PhD</option>
                                                                     <option value="Master">Master</option>
                                                                     <option value="Degree">Degree</option>
@@ -227,21 +234,45 @@
                                                                 <input type="text" id="yearG2" name="yearG2[]" class="form-control">
                                                             </div>
                                                         </div>
-                                                    </td>
-                                                </p>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                                        <div class="form-group">
+                                                        <center>
+                                                        <table id="table2">
+                                                            <tr>
+                                                                <td>Level</td><td>&nbsp</td>
+                                                                <td>University</td><td>&nbsp</td>
+                                                                <td>Program</td><td>&nbsp</td>
+                                                                <td>Year Graduate</td><td>&nbsp</td>
+                                                            </tr>
+                                                            <?php
+                                                                foreach($results4 as $dnq) {
+
+                                                            ?>
+
+                                                                <tr><?php $nqid=$dnq['qualification_id'] ?>
+                                                                <td><?php echo $dnq["level"]?></td><td>&nbsp</td>
+                                                                <td><?php echo $dnq["university"]?></td><td>&nbsp</td>
+                                                                <td><?php echo $dnq['program']?></td><td>&nbsp</td>
+                                                                <td><?php echo $dnq["yearGraduate"]?></td><td>&nbsp</td>
+                                                                <td><a href="update_non_uitm.php?id=<?=$nqid?>">Update</a></td>
+                                                            </tr>
+
+                                                            <?php
+                                                                } ?>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                                    
                                         </div>
+                                    </div>
 
                                     <div class="form-group">
                                     <div class="col-lg-5"></div>
                                     <div class="col-lg-2">
-                                        <button type="submit" class="btn btn-rounded btn-danger btn-block"  name="update" id="update" value="Update">EDIT</button>
+                                        <button type="submit" class="btn btn-rounded btn-alert btn-block"  name="update" id="update" value="Update">EDIT</button>
                                     </div>
                              
                                     <div class="col-lg-2">
-                                        <a href="?content=3"><button type="button" class="btn btn-rounded btn-danger btn-block">NEXT</button></a>
+                                        <a href="?content=3"><button type="button" class="btn btn-rounded btn-alert btn-block">NEXT</button></a>
                                     </div>
 
                                     <div class="col-lg-5"></div>
@@ -386,7 +417,7 @@
         function addRow(tableID) {
             var table = document.getElementById(tableID);
             var rowCount = table.rows.length;
-            if(rowCount < 5 ){                           // limit the user from creating fields more than your limits
+            if(rowCount < 10 ){                           // limit the user from creating fields more than your limits
                 var row = table.insertRow(rowCount);
                 var colCount = table.rows[0].cells.length;
                 for(var i=0; i<colCount; i++) {
@@ -394,7 +425,7 @@
                     newcell.innerHTML = table.rows[0].cells[i].innerHTML;
                 }
             }else{
-                 alert("Maximum is 5.");
+                 alert("Maximum is 10.");
                        
             }
         };

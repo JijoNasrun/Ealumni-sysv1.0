@@ -136,7 +136,7 @@ function hide(){$("#staff").hide();}
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script>
   $(function() {
-    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
   });
   </script>
 </head>
@@ -171,27 +171,27 @@ function hide(){$("#staff").hide();}
                        <div class="tab-block mb25">
                             <ul class="nav tabs-left">
                                 <li class="active">
-                                    <a href="?content=1" > <b>(1)</b> Biodata <i class="fa fa-caret-down pl5"></i>
+                                    <a href="?content=1" > <b>(1)</b> Biodata
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="?content=2"> <b>(2)</b> Academic <b>Achievement</b><i class="fa fa-caret-down pl5"></i>
+                                    <a href="?content=2"> <b>(2)</b> Academic <b>Achievement</b>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="?content=3"> <b>(3)</b> Current<b> Employment</b><i class="fa fa-caret-down pl5"></i>
+                                    <a href="?content=3"> <b>(3)</b> Current<b> Employment</b>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="?content=4"> <b>(4)</b> Professional <b> Skill</b><i class="fa fa-caret-down pl5"></i>
+                                    <a href="?content=4"> <b>(4)</b> Professional <b> Skill</b>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="?content=5"> <b>(5)</b> Contribution<i class="fa fa-caret-down pl5"></i>
+                                    <a href="?content=5"> <b>(5)</b> Contribution
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="?content=6"> <b>(6)</b> Summary<i class="fa fa-caret-down pl5"></i>
+                                    <a href="?content=6"> <b>(6)</b> Summary
                                     </a>
                                 </li>
                             </ul>

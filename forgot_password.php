@@ -29,8 +29,8 @@
 
 
     <div class="main">
-    <form name="form" method="post" action="login0.php" autocomplete="off">
-        <h1><span>e-Alumni</span> <lable> Login </lable> </h1>
+    <form name="form" method="post" action="forgot_password0.php" autocomplete="off">
+        <h1><lable> Password Reset </lable> </h1>
         <div class="inset">
           <p>
             <label for="IC">IC Number</label>
@@ -42,19 +42,20 @@
             <br/>
             <div id="txtHint3"></div>
           </p>
-                <p>
+            <p>
             <label for="password">Password :</label>
-            <input type="password" placeholder="Password" name="password" required/>
+            <input type="password" placeholder="Password" name="password1" required/>
           </p>
           <p>
-            <input type="checkbox" name="remember" id="remember">
-            <label for="remember">Remember me!</label>
+            <label for="password">Re-enter Password :</label>
+            <input type="password" placeholder="Password" name="password2" required/>
           </p>
+         
        </div>
    
         <p class="p-container">
-          <span><a href="forgot_password.php">Forgot password ?</a></span>
-           <input type="submit" name="submit" id="submit" value="Log In" disabled="disabled" />
+          
+           <input type="submit" name="submit" id="submit" value="Submit" disabled="disabled" />
         </p>
     </form>
   </div> 
