@@ -68,7 +68,7 @@ function runQuery($query) {
           </p>
                   <p>
             <label>Name :</label>
-            <input type="password" placeholder="Name" name="name" required/>
+            <input type="text" placeholder="Name" name="name" required/>
           </p>
                 <p>
             <label>E-mail :</label>
