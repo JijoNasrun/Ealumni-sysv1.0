@@ -119,7 +119,7 @@
                                                 $birthdates = '19'.$getyear.'-'.$get_month.'-'.$get_day;
                                                 
                                              ?>
-                                            <input type="text" id="datepicker" disabled class="form-control" name="birthdate" value="<?php echo $birthdates; ?>">
+                                            <input type="text" id="datepicker" readonly class="form-control" name="birthdate" value="<?php echo $birthdates; ?>">
                                         </div>
                                     
                                     
