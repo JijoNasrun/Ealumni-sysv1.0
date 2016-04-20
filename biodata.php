@@ -30,7 +30,9 @@
          if(isset($_POST['update']))
          {
            
-
+            echo "<script>
+                alert('$birthdate')
+                </script>"
             
             
            
