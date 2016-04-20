@@ -66,7 +66,7 @@
             {
                 echo "<script>
                     alert('Updated data successfully');
-                    location.reload(); 
+                     
                     </script>";
          } 
 
