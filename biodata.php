@@ -62,12 +62,13 @@
             {
                die('Could not update data: ' . mysql_error());
             }
-
-            
-             echo "<script>
+            else
+            {
+                echo "<script>
                     alert('Updated data successfully');
-                   
-             </script>";
+                    location.reload(); 
+                    </script>";
+         } 
 
          }
          else
