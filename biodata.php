@@ -32,7 +32,7 @@
            
             echo "<script>
                 alert('$birthdate')
-                </script>"
+                </script>";
             
             
            
