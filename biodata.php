@@ -118,7 +118,7 @@
                                                 $get_day= substr($kp,4,2);
                                                 
                                              ?>
-                                            <input type="text" id="datepicker" disabled class="form-control" name="birthdate" value="<?php echo '19'.$getyear.'-'.$get_month;'-'.$get_day; ?>">
+                                            <input type="text" id="datepicker" disabled class="form-control" name="birthdate" value="<?php echo '19'.$getyear.'-'.$get_month.'-'.$get_day; ?>">
                                         </div>
                                     
                                     
