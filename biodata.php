@@ -66,7 +66,7 @@
             {
                 echo "<script>
                     alert('Updated data successfully');
-                     
+                    window.location.href = '?content=1'; 
                     </script>";
          } 
 
