@@ -63,9 +63,10 @@
                die('Could not update data: ' . mysql_error());
             }
 
-             echo "Updated data successfully\n";
+            
              echo "<script>
-                    location.reload();
+                    alert('Updated data successfully');
+                   
              </script>";
 
          }
