@@ -43,7 +43,7 @@
             $telnum = $_POST['telnum'];
             $homeoffice = $_POST['homeoffice'];
             $salutation = $_POST['salutation'];
-            $birthdate = $_POST['birthdate'];
+            echo $birthdate = $_POST['birthdate'];
             $country = $_POST['ccountry'];
             $caddress = $_POST['caddress'];
             $cpostcode = $_POST['cpostcode'];
@@ -56,14 +56,14 @@
             
           
             
-            $retval = mysql_query("UPDATE alumni SET  jantina = '$gender',alamat ='$address', poskod_tetap = '$postcode', bandar_tetap = '$city', negeri_tetap = '$state', negara_tetap='$country', email_rasmi = '$email', no_tel = '$telnum', gelaran='$salutation',tarikh_lahir='$birthdate',calamat_tetap ='$caddress', cposkod_tetap = '$cpostcode', cbandar_tetap = '$ccity', cnegeri_tetap = '$cstate', cnegara_tetap='$ccountry',staff_id='$staff_num',department='$department',campus='$campus',home_office_tel='$homeoffice'  WHERE no_kp = '$kp'" );
+            //$retval = mysql_query("UPDATE alumni SET  jantina = '$gender',alamat ='$address', poskod_tetap = '$postcode', bandar_tetap = '$city', negeri_tetap = '$state', negara_tetap='$country', email_rasmi = '$email', no_tel = '$telnum', gelaran='$salutation',tarikh_lahir='$birthdate',calamat_tetap ='$caddress', cposkod_tetap = '$cpostcode', cbandar_tetap = '$ccity', cnegeri_tetap = '$cstate', cnegara_tetap='$ccountry',staff_id='$staff_num',department='$department',campus='$campus',home_office_tel='$homeoffice'  WHERE no_kp = '$kp'" );
             
-            if(! $retval )
-            {
-               die('Could not update data: ' . mysql_error());
-            }
+            // if(! $retval )
+            // {
+            //    die('Could not update data: ' . mysql_error());
+            // }
 
-            echo "Updated data successfully\n";
+            // echo "Updated data successfully\n";
 
          }
          else

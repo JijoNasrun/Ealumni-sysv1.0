@@ -3,7 +3,7 @@
 $user = "root";//mysql username
 $pass = "12345";//mysql password
 $host = "localhost";//server name or ip addres
-$dbname = "ealumn-sys";//your db name
+$dbname = "ealumni";//your db name
 
 $dbconn = mysql_connect($host, $user, $pass);
 
