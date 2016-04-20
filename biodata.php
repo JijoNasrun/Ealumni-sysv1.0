@@ -64,6 +64,9 @@
             }
 
              echo "Updated data successfully\n";
+             echo "<script>
+                    location.reload();
+             </script>";
 
          }
          else
