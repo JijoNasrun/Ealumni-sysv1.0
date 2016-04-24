@@ -471,7 +471,7 @@
                                         <div class="col-lg-6">      
                                                 <div class="col-lg-3">
                                                     
-                                                        <input type="checkbox" id="radioExample3" name="same" onClick="FillBilling(this.form)">
+                                                        <input type="checkbox" name="billingtoo" onClick="FillBilling(this.form)">
                                                         <label for="radioExample1">Yes</label>
                                                     
                                                 </div>
