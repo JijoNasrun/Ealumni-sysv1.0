@@ -78,6 +78,37 @@ function show(){$("#staff").show();}
 <script>
 function hide(){$("#staff").hide();}
 </script>
+<script>
+
+    function FillBilling(f) {
+
+        if(f.billingtoo.checked == true) {
+            alert('masuk');
+            f.caddress.value = f.address.value;
+            f.cpostcode.value = f.postcode.value
+            f.ccity.value = f..value;
+            f.cstate.value = f.state.value;
+            f.ccountry.value = f.country.value;
+
+
+
+        }
+
+        else if(f.billingtoo.checked == false) {
+
+            f.ccountry.value = '';
+            f.cstate.value ='';
+            f.ccity.value = '';
+            f.cpostcode.value = '';
+            f.caddress.value = '';
+
+
+        }
+
+    }
+
+</script>
+
 
 
     <script type="text/javascript">
@@ -139,36 +170,6 @@ function hide(){$("#staff").hide();}
     $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
   });
   </script>
-<script>
-
-    function FillBilling(f) {
-
-        if(f.billingtoo.checked == true) {
-            alert('masuk');
-            f.caddress.value = f.address.value;
-            f.cpostcode.value = f.postcode.value
-            f.ccity.value = f..value;
-            f.cstate.value = f.state.value;
-            f.ccountry.value = f.country.value;
-
-
-
-        }
-
-        if(f.billingtoo.checked == false) {
-
-            f.ccountry.value = '';
-            f.cstate.value ='';
-            f.ccity.value = '';
-            f.cpostcode.value = '';
-            f.caddress.value = '';
-
-
-        }
-
-    }
-
-</script>
 
 </head>
 <body>
