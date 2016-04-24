@@ -83,7 +83,7 @@ function hide(){$("#staff").hide();}
     function FillBilling(f) {
 
         if(f.billingtoo.checked == true) {
-            alert('masuk');
+            
             f.caddress.value = f.address.value;
             f.cpostcode.value = f.postcode.value
             f.ccity.value = f.city.value;
