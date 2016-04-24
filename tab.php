@@ -139,6 +139,37 @@ function hide(){$("#staff").hide();}
     $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
   });
   </script>
+<script>
+
+    function FillBilling(f) {
+
+        if(same.checked == true) {
+
+            f.caddress.value = f.address.value;
+            f.cpostcode.value = f.postcode.value
+            f.ccity.value = f..value;
+            f.cstate.value = f.state.value;
+            f.ccountry.value = f.country.value;
+
+
+
+        }
+
+        if(same.checked == false) {
+
+            f.ccountry.value = '';
+            f.cstate.value ='';
+            f.ccity.value = '';
+            f.cpostcode.value = '';
+            f.caddress.value = '';
+
+
+        }
+
+    }
+
+</script>
+
 </head>
 <body>
     <header  id="header">
