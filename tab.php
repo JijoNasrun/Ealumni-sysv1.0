@@ -143,7 +143,7 @@ function hide(){$("#staff").hide();}
 
     function FillBilling(f) {
 
-        if(same.checked == true) {
+        if(f.billingtoo.checked == true) {
 
             f.caddress.value = f.address.value;
             f.cpostcode.value = f.postcode.value
@@ -155,7 +155,7 @@ function hide(){$("#staff").hide();}
 
         }
 
-        if(same.checked == false) {
+        if(f.billingtoo.checked == false) {
 
             f.ccountry.value = '';
             f.cstate.value ='';
