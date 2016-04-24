@@ -471,7 +471,7 @@
                                         <div class="col-lg-6">      
                                                 <div class="col-lg-3">
                                                     <div class="radio-custom square mb5">
-                                                        <input type="radio" id="same" name="radioExample" onClick="FillBilling(this.form)">
+                                                        <input type="radio" id="same" name="same" onClick="FillBilling(this.form)">
                                                         <label for="radioExample1">Yes</label>
                                                     </div>
                                                 </div>
