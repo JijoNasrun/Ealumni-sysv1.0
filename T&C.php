@@ -38,11 +38,11 @@
          <fieldset>
          <legend><h3>Terms And Condition</h3></legend>
          <font color="black">
-            <h1>Privacy Policy</h1>
+            <h1>Privacy Policy</h1><br>
             All personal information (i.e. your address, phone number, e-mail) collected in the FSKM e-Alumni system will be used for the purposes of registration.
             We may also use the information you provide to fulfill further requests for information and services, or to contact you with information that may be of interest to you
             The information collected is maintained in confidence and in accordance with the <a href ="http://www.uitm.edu.my/index.php/en/component/content/article?layout=edit&id=356" target="_blank">Privacy Policies of the UiTM</a>.<br>
-            <h1>Contact Us</h1><br>
+            <br><h1>Contact Us</h1><br>
             For assistance with your registration including cancelations, or updating your information, our customer support team can be reached by e-mail, alumni@fskm.uitm.edu.my or phone, (+603) 5543 5497, Monday to Friday, 8:30 a.m. to 4:30 p.m.
             </font>
          <fieldset>
