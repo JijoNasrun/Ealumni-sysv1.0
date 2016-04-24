@@ -86,7 +86,7 @@ function hide(){$("#staff").hide();}
             alert('masuk');
             f.caddress.value = f.address.value;
             f.cpostcode.value = f.postcode.value
-            f.ccity.value = f..value;
+            f.ccity.value = f.city.value;
             f.cstate.value = f.state.value;
             f.ccountry.value = f.country.value;
 
