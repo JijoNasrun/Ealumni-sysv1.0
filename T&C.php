@@ -30,19 +30,19 @@
   <!-- main -->
    <center>
     <div class="main">
-    <form>
+    
 
         <h1> Terms And Condition  </h1>
-        <div class="inset">
+        
          
-         <table>
-            <tr><td><h1>Privacy Policy</h1></td></tr>
-            <tr><td>All personal information (i.e. your address, phone number, e-mail) collected in the FSKM e-Alumni system will be used for the purposes of registration.</td></tr><tr><td>&nbsp</td></tr>
-            <tr><td>We may also use the information you provide to fulfill further requests for information and services, or to contact you with information that may be of interest to you</td></tr><tr><td>&nbsp</td></tr>
-            <tr><td>The information collected is maintained in confidence and in accordance with the <a href ="http://www.uitm.edu.my/index.php/en/component/content/article?layout=edit&id=356" target="_blank">Privacy Policies of the UiTM</a>.</td></tr><tr><td>&nbsp</td></tr><tr><td>&nbsp</td></tr>
-            <tr><td><h1>Contact Us</h1></td></tr>
-            <tr><td>For assistance with your registration including cancelations, or updating your information, our customer support team can be reached by e-mail, alumni@fskm.uitm.edu.my or phone, (+603) 5543 5497, Monday to Friday, 8:30 a.m. to 4:30 p.m.</td></tr>
-         </table> 
+         <fieldset>
+            <h1>Privacy Policy</h1>
+            All personal information (i.e. your address, phone number, e-mail) collected in the FSKM e-Alumni system will be used for the purposes of registration.
+            We may also use the information you provide to fulfill further requests for information and services, or to contact you with information that may be of interest to you
+            The information collected is maintained in confidence and in accordance with the <a href ="http://www.uitm.edu.my/index.php/en/component/content/article?layout=edit&id=356" target="_blank">Privacy Policies of the UiTM</a>.<br>
+            ><h1>Contact Us</h1><br>
+            For assistance with your registration including cancelations, or updating your information, our customer support team can be reached by e-mail, alumni@fskm.uitm.edu.my or phone, (+603) 5543 5497, Monday to Friday, 8:30 a.m. to 4:30 p.m.
+         <fieldset>
          
 
       <div class="header-cnt">
@@ -61,7 +61,7 @@
       
           
         
-    </form>
+   
   </div>   
   </center>      
 
