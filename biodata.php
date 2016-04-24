@@ -470,10 +470,10 @@
                                         <label for="inputStandard" class="col-lg-3 control-label">Click This Button if correspondence address is same as current address</label>
                                         <div class="col-lg-6">      
                                                 <div class="col-lg-3">
-                                                    <div class="radio-custom square mb5">
+                                                    
                                                         <input type="radio" id="radioExample3" name="same" onClick="FillBilling(this.form)">
                                                         <label for="radioExample1">Yes</label>
-                                                    </div>
+                                                    
                                                 </div>
                                          </div>
                                     </div>
