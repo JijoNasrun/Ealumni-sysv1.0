@@ -59,6 +59,8 @@
     <!-- Page Plugins via CDN -->
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/globalize/0.1.1/globalize.min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
     <!-- via local files 
     <script type="text/javascript" src="vendor/plugins/globalize/src/core.js"></script>
@@ -191,8 +193,8 @@ function hide(){$("#staff").hide();}
 
     <section id="content" class="animated fadeIn">
     <div class="row">
-    <!--<div class="com-md-12">
-                        <ul class="nav tabs-left">
+    <div class="com-md-12">
+                        <ul class="nav nav-tabs">
                                 <li class="active">
                                     <a href="?content=1" > <b>(1)</b> Biodata
                                     </a>
@@ -218,7 +220,7 @@ function hide(){$("#staff").hide();}
                                     </a>
                                 </li>
                             </ul>
-                            </div> -->
+                            </div> 
         <div class="col-md-12">
             <div class="panel">
                 <div class="panel-heading">
