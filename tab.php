@@ -199,9 +199,8 @@ function hide(){$("#staff").hide();}
 
                 <div class="panel-body">
                     <div class="col-md-12">
-
-                       <div class="tab-block mb25">
-                            <ul class="nav tabs-left">
+                    <div class="com-md-12">
+                        <ul class="nav tabs-left">
                                 <li class="active">
                                     <a href="?content=1" > <b>(1)</b> Biodata
                                     </a>
@@ -227,6 +226,9 @@ function hide(){$("#staff").hide();}
                                     </a>
                                 </li>
                             </ul>
+                            </div>
+                       <div class="tab-block mb25">
+                            
                             <div class="tab-content">                                
                                     <?php
                                      
