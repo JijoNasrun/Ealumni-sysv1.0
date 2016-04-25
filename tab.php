@@ -239,7 +239,7 @@ function hide(){$("#staff").hide();}
                                                 case 1:
                                                     echo "<div class='col-md-9'>";
                                                     include 'biodata.php';
-                                                    echo '</div>'
+                                                    echo '</div>';
                                                 break;
 
                                                 case 2:
