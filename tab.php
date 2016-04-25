@@ -228,7 +228,7 @@ function hide(){$("#staff").hide();}
                 </div>
 
                 <div class="panel-body">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                     
                        <div class="tab-block mb25">
                             
@@ -240,9 +240,9 @@ function hide(){$("#staff").hide();}
                                                 switch($_GET['content']){
 
                                                 case 1:
-                                                    echo "<div class='col-md-9'>";
+                                                   
                                                     include 'biodata.php';
-                                                    echo '</div>';
+                                                    
                                                 break;
 
                                                 case 2:
