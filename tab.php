@@ -191,15 +191,7 @@ function hide(){$("#staff").hide();}
 
     <section id="content" class="animated fadeIn">
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel">
-                <div class="panel-heading">
-                    <span class="panel-title"><b>Alumni Information</b></span><div class="right"><a href="logout.php">Logout</a></div>
-                </div>
-
-                <div class="panel-body">
-                    <div class="col-md-12">
-                    <div class="com-md-12">
+    <div class="com-md-12">
                         <ul class="nav tabs-left">
                                 <li class="active">
                                     <a href="?content=1" > <b>(1)</b> Biodata
@@ -227,6 +219,15 @@ function hide(){$("#staff").hide();}
                                 </li>
                             </ul>
                             </div>
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <span class="panel-title"><b>Alumni Information</b></span><div class="right"><a href="logout.php">Logout</a></div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="col-md-12">
+                    
                        <div class="tab-block mb25">
                             
                             <div class="tab-content">                                
