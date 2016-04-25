@@ -237,7 +237,7 @@ function hide(){$("#staff").hide();}
                                                 switch($_GET['content']){
 
                                                 case 1:
-                                                    echo "<div class='col-md-9'";
+                                                    echo "<div class='col-md-9'>";
                                                     include 'biodata.php';
                                                     echo '</div>'
                                                 break;
