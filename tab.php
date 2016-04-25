@@ -191,7 +191,7 @@ function hide(){$("#staff").hide();}
 
     <section id="content" class="animated fadeIn">
     <div class="row">
-    <div class="com-md-12">
+    <!--<div class="com-md-12">
                         <ul class="nav tabs-left">
                                 <li class="active">
                                     <a href="?content=1" > <b>(1)</b> Biodata
@@ -218,7 +218,7 @@ function hide(){$("#staff").hide();}
                                     </a>
                                 </li>
                             </ul>
-                            </div>
+                            </div> -->
         <div class="col-md-12">
             <div class="panel">
                 <div class="panel-heading">
