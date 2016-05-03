@@ -195,7 +195,7 @@ function hide(){$("#staff").hide();}
     <div class="row">
     <div class="com-md-12">
                         <ul class="nav nav-tabs">
-                                <li class="active">
+                                <li>
                                     <a href="?content=1" > <b>(1)</b> Biodata
                                     </a>
                                 </li>
