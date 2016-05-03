@@ -92,7 +92,7 @@
                                                 <div class="col-lg-5">
                                                 </div>
                                                 <div class="col-lg-2">
-                                                    <button type="submit" class="btn btn-rounded btn-alert btn-block" name="update" id="update" value="Update">UPDATE</button>
+                                                    <button type="submit" class="btn btn-rounded btn-alert btn-block" name="update" id="update" value="Update">SAVE</button>
                                                 </div>
                                                 <div class="col-lg-2">
                                                     <a href="?content=6"><button type="button" class="btn btn-rounded btn-alert btn-block">NEXT</button></a>
