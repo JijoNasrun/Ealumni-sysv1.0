@@ -82,7 +82,7 @@
                                                         <select id="status" name="status" class="form-control">
                                                             <option value="Employed">Employed</option>
                                                             <option value="Unemployed">Unemployed</option>
-                                                            <option value="Self-employed">Self-employed</option>
+                                                            <option value="Self-employed">Self-Employed</option>
                                                             <option value="Furthering Study">Further Study</option>
                                                         </select>
                                                         <i class="arrow"></i>
@@ -102,8 +102,8 @@
                                         <div class="col-lg-8">
                                             <label class="field select">
                                                         <select id="relate" name="relate" class="form-control">
-                                                            <option value="YES">YES</option>
-                                                            <option value="NO">NO</option>
+                                                            <option value="Related">YES</option>
+                                                            <option value="Not Related">NO</option>
                                                         </select>
                                                         <i class="arrow"></i>
                                                     </label>
