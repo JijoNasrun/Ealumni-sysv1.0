@@ -7,7 +7,7 @@
 <head>
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
-    <title>e - Alumni</title>
+    <title>E-Alumni FSKM</title>
 
     <meta name="keywords" content="HTML5 Bootstrap 3 Admin Template UI Theme" />
     <meta name="description" content="AdminDesigns - A Responsive HTML5 Admin UI Framework">
@@ -35,7 +35,6 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/favicon.ico">
 
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -60,12 +59,13 @@
     <!-- Page Plugins via CDN -->
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/globalize/0.1.1/globalize.min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
     <!-- via local files 
     <script type="text/javascript" src="vendor/plugins/globalize/src/core.js"></script>
     <script type="text/javascript" src="vendor/plugins/moment/moment.min.js"></script> -->
 
-   
 <script type="text/javascript">
   $(document).ready(function() 
     {
@@ -80,6 +80,37 @@ function show(){$("#staff").show();}
 <script>
 function hide(){$("#staff").hide();}
 </script>
+<script>
+
+    function FillBilling(f) {
+
+        if(f.billingtoo.checked == true) {
+            
+            f.caddress.value = f.address.value;
+            f.cpostcode.value = f.postcode.value
+            f.ccity.value = f.city.value;
+            f.cstate.value = f.state.value;
+            f.ccountry.value = f.country.value;
+
+
+
+        }
+
+        else if(f.billingtoo.checked == false) {
+
+            f.ccountry.value = '';
+            f.cstate.value ='';
+            f.ccity.value = '';
+            f.cpostcode.value = '';
+            f.caddress.value = '';
+
+
+        }
+
+    }
+
+</script>
+
 
 
     <script type="text/javascript">
@@ -138,9 +169,10 @@ function hide(){$("#staff").hide();}
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script>
   $(function() {
-    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
   });
   </script>
+
 </head>
 <body>
     <header  id="header">
@@ -161,6 +193,34 @@ function hide(){$("#staff").hide();}
 
     <section id="content" class="animated fadeIn">
     <div class="row">
+    <div class="com-md-12">
+                        <ul class="nav nav-tabs">
+                                <li>
+                                    <a href="?content=1" > <b>(1)</b> Biodata
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?content=2"> <b>(2)</b> Academic <b>Achievement</b>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?content=3"> <b>(3)</b> Current<b> Employment</b>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?content=4"> <b>(4)</b> Professional <b> Skill</b>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?content=5"> <b>(5)</b> Contribution
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?content=6"> <b>(6)</b> Summary
+                                    </a>
+                                </li>
+                            </ul>
+                            </div> 
         <div class="col-md-12">
             <div class="panel">
                 <div class="panel-heading">
@@ -169,34 +229,9 @@ function hide(){$("#staff").hide();}
 
                 <div class="panel-body">
                     <div class="col-md-12">
-
+                    
                        <div class="tab-block mb25">
-                            <ul class="nav tabs-left">
-                                <li class="active">
-                                    <a href="?content=1" > <b>(1)</b> Biodata <i class="fa fa-caret-down pl5"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="?content=2"> <b>(2)</b> Academic <b>Achievement</b><i class="fa fa-caret-down pl5"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="?content=3"> <b>(3)</b> Current<b> Employment</b><i class="fa fa-caret-down pl5"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="?content=4"> <b>(4)</b> Professional <b> Skill</b><i class="fa fa-caret-down pl5"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="?content=5"> <b>(5)</b> Contribution<i class="fa fa-caret-down pl5"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="?content=6"> <b>(6)</b> Summary<i class="fa fa-caret-down pl5"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                            
                             <div class="tab-content">                                
                                     <?php
                                      
@@ -204,8 +239,10 @@ function hide(){$("#staff").hide();}
 
                                                 switch($_GET['content']){
 
-                                                case 1: 
+                                                case 1:
+                                                   
                                                     include 'biodata.php';
+                                                    
                                                 break;
 
                                                 case 2:

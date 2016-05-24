@@ -44,7 +44,10 @@ if(isset($_POST['submit']))
 	function succ()
 	{
 	
-		header("location: biodata.php");
+		echo "<script language='javascript'>
+	          alert('Congratulations!! You are now registered.<br>Please Change your password for future login')
+	          location = 'change_password.php';
+	          </script>";
 		exit();
 	}
 	

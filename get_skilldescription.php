@@ -69,7 +69,7 @@ if(!empty($_POST["skill_id"])) {
 
 	
 ?>
-	<option value="">Select Skill</option>
+	
 <?php
 	foreach($results as $displayskill) {
 ?>

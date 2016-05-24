@@ -8,11 +8,12 @@ include("include/dbconn.php");
 	{
 		
 		echo "<script language='javascript'>
-			  alert('Your data isn't available)
+			  alert('There is no data that matches your identification number.')
 	          location = 'email.php';
 	          </script>";
 		exit();
 	}
+
 	function err2()
 	{
 		
@@ -31,10 +32,6 @@ include("include/dbconn.php");
 		exit();
 	}
 	
-	//login
-	$msg="";
-
-
 if(isset($_POST['submit']))
 {
  /* capture values from HTML form */
@@ -53,8 +50,7 @@ if(isset($_POST['submit']))
 					err2();
 				}	
 				else
-					succ();
-				
+					succ();	
 			}	
 			else
 			{

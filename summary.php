@@ -27,6 +27,12 @@ function printFunction() {
 	$cposkod_tetap=$row['cposkod_tetap'];
 	$cnegara_tetap=$row['cnegara_tetap'];
 	$contribution=$row['contribution'];
+    $staff_no=$row['staff_id'];
+    $staff_department=$row['department'];
+    $staff_campus=$row['campus'];
+    $email_rasmi = $row['email_rasmi'];
+    $no_tel = $row['no_tel'];
+    $home_office_tel = $row['home_office_tel'];
     
     $orgID = $row['orgID'];
 
@@ -34,6 +40,7 @@ function printFunction() {
     $orgs = mysql_fetch_array($org);
 
     $orgName=$orgs['OrganizationName'];
+    $type_id=$orgs['type_id'];
     $orgAddress=$orgs['Address1'];
     $orgState=$orgs['State'];
     $orgCity=$orgs['City'];
@@ -42,6 +49,10 @@ function printFunction() {
     $empstat = $row['empStatus'];
     $jobrelated = $row['relate'];
     $salRange = $row['salRangeId']; 
+    $telephone = $orgs['Telephone'];
+    $fax = $orgs['Fax'];
+    $email = $orgs['Email'];
+    $website = $orgs['Website'];
 
     //getting uitm qualification of an alumni
     $query = mysql_query("SELECT * FROM uitm_qualification WHERE no_kp = '$kp'");
@@ -79,23 +90,36 @@ function printFunction() {
                             		</tr>
                             		<tr>
                             			<td>ADDRESS</td>
-                            			<td>: <?php echo $address; echo $poskod; echo $city ; echo $state; echo $negara_tetap; ?></td>
+                            			<td>: <?php echo $address;echo " ,";echo $poskod;echo " ,";echo $city ;echo " ,";echo $state;echo " ,";echo $negara_tetap; ?></td>
                             		</tr>
                             		<tr>
                             			<td>CORRESPONDENCE ADDRESS</td>
-                            			<td>: <?php echo $calamat; echo $cbandar_tetap; echo $cposkod_tetap; echo $cnegeri_tetap; echo $cnegara_tetap; ?></td>
+                            			<td>: <?php echo $calamat;echo " ,"; echo $cbandar_tetap;echo " ,"; echo $cposkod_tetap;echo " ,"; echo $cnegeri_tetap;echo " ,"; echo $cnegara_tetap; ?></td>
                             		</tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>: <?php echo $email_rasmi ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile</td>
+                                        <td>: <?php echo $no_tel ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Home/Office</td>
+                                        <td><?php echo $home_office_tel ?></td>
+
+                                    </tr>
                             		<tr>
                             			<td>STAFF NUMBER</td>
-                            			<td>:</td>
+                            			<td>: <?php echo $staff_no ?></td> 
                             		</tr>
                             		<tr>
                             			<td>CAMPUS</td>
-                            			<td>:</td>
+                            			<td>: <?php echo $staff_campus ?></td> 
                             		</tr>
                             		<tr>
                             			<td>DEPARTMENT</td>
-                            			<td>:</td>
+                            			<td>: <?php echo $staff_department ?></td> 
                             		</tr>
                             	</table>
                             </div>
@@ -129,10 +153,11 @@ function printFunction() {
                              <br>
                              <?php 
 
-                             echo "NON UITM QUALIFICATION"; echo "<br><br>";
+                             
 
                              $nonUitmQuery = mysql_query("SELECT * FROM non_uitm_qualification where no_kp = '$kp'");
                              while($nonUitmRow = mysql_fetch_array($nonUitmQuery)){
+                                echo "NON UITM QUALIFICATION"; echo "<br><br>";
                                 $nonUitmLevel=$nonUitmRow['level'];
                                 $nonUitmUni=$nonUitmRow['university'];
                                 $nonUitmYearG=$nonUitmRow['yearGraduate'];
@@ -159,8 +184,13 @@ function printFunction() {
                             $salQuery = mysql_query("SELECT * FROM salary_range where SalRangeID = '$salRange'");
                             $salRow = mysql_fetch_array($salQuery);
                             $salary = $salRow['SalRangeValue'];
+                            $typeQuery =mysql_query("SELECT * FROM organization_type where TypeID = '$type_id'");
+                            $typeRow = mysql_fetch_array($typeQuery);
+                            $type = $typeRow['TypeName'];
                             echo "Salary :"; echo $salary;
                             echo "<br>";
+                            echo "Organization Name :"; echo $orgName; echo "<br>";
+                            echo "Organization Type :"; echo $type; echo "<br>";
                             echo "Organization Address :"; 
                             echo $orgAddress;echo ", ";
                             echo $orgPostcode;echo ",";
@@ -168,6 +198,10 @@ function printFunction() {
                             echo $orgState; echo ",";
                             echo $orgCountry; 
                             echo "<br>";
+                            echo "Telephone : ";echo $telephone;echo "<br>";
+                            echo "Fax : ";echo $fax;echo "<br>";
+                            echo "Email : ";echo $email;echo "<br>";
+                            echo "Website : ";echo $website;
 
                             ?>
 
@@ -178,7 +212,26 @@ function printFunction() {
                     		<span class="panel-title">PROFESSIONALISM</span>
                     	</div>
                     	<div class="panel-body">
-                    		//tbc
+                    		<?php 
+                                $skillQuery = mysql_query("SELECT * FROM professionalism WHERE no_kp = '$kp'");
+                                
+                                
+                                while($skillRow=mysql_fetch_array($skillQuery)){
+                                    $id = $skillRow['skillID'];
+                                    $description = $skillRow['skilldes'];
+
+                                    $skillID = mysql_query("SELECT * FROM skill_category where SkillCatID = '$id'");
+                                    $skillIDRow = mysql_fetch_array($skillID);
+                                    $skillcategory = $skillIDRow['SkillCatName'];
+                                    echo "Skill Category : "; echo $skillcategory; echo "<br>";
+                                    $descQuery = mysql_query("SELECT * FROM skill where skillID = '$description'");
+                                    $descRow = mysql_fetch_array($descQuery);
+                                    $desc = $descRow['SkillDescription'];
+                                    echo "Skill Description : " ; echo $desc;echo "<br>"; echo "<br>";
+
+
+                                }
+                            ?>
                     	</div>
                     </div>
                     <div class="panel">
@@ -197,10 +250,10 @@ function printFunction() {
                     </div>
                     <div class="form-group">
                     	<div class="col-lg-2">
-                            <button type="button" class="btn btn-rounded btn-danger btn-block" onclick="printFunction()">PRINT</button>
+                            <button type="button" class="btn btn-rounded btn-alert btn-block" onclick="printFunction()">PRINT</button>
                      	</div>
                      	<div class="col-lg-2">
-                     		 <a href="logout.php"><button type="button" class="btn btn-rounded btn-danger btn-block">SAVE & LOGOUT</button></a>
+                     		 <a href="logout.php"><button type="button" class="btn btn-rounded btn-alert btn-block">SAVE & LOGOUT</button></a>
                      	</div>
                     </div>
                      

@@ -13,16 +13,25 @@
         $display_postcode=$row['poskod_tetap'];
         $display_state=$row['negeri_tetap'];
         $display_city=$row['bandar_tetap'];
+        $correspondence_addr=$row['calamat_tetap'];
+        $correspondence_postcode=$row['cposkod_tetap'];
+        $correspondence_city=$row['cbandar_tetap'];
+        $correspondence_state=$row['cnegeri_tetap'];
+        $correspondence_country=$row['cnegara_tetap'];
+        $no_tel = $row['no_tel'];
+        $home_office = $row['home_office_tel'];
+        $email = $row['email_rasmi'];
+        $birthday = $row['tarikh_lahir'];
 
-
+ 
 
 
         //update alumni information
          if(isset($_POST['update']))
          {
            
-
-            $n = $_GET['name'];
+            
+            
             
            
             $gender = $_POST['gender'];
@@ -53,7 +62,13 @@
             {
                die('Could not update data: ' . mysql_error());
             }
-            echo "Updated data successfully\n";
+            else
+            {
+                echo "<script>
+                    alert('Updated data successfully');
+                    window.location.href = '?content=1'; 
+                    </script>";
+         } 
 
          }
          else
@@ -100,8 +115,16 @@
 
                                     <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Birth Date</label>
-                                        <div class="col-lg-2">
-                                            <input type="text" id="datepicker" class="form-control" name="birthdate">
+                                        <div class="col-lg-3">
+                                            <?php
+                                                
+                                                $getyear = substr($kp,0,2);
+                                                $get_month = substr($kp,2,2);
+                                                $get_day= substr($kp,4,2);
+                                                $birthdates = '19'.$getyear.'-'.$get_month.'-'.$get_day;
+                                                
+                                             ?>
+                                            <input type="text" id="datepicker" readonly class="form-control" name="birthdate" value="<?php echo $birthdates; ?>">
                                         </div>
                                     
                                     
@@ -443,23 +466,34 @@
                                                     </label>
                                         </div>
                                     </div>  
+                                    <div class="form-group">
+                                        <label for="inputStandard" class="col-lg-3 control-label">Click This Button if correspondence address is same as current address</label>
+                                        <div class="col-lg-6">      
+                                                <div class="col-lg-3">
+                                                    
+                                                        <input type="checkbox" name="billingtoo" onClick="FillBilling(this.form)">
+                                                        <label for="radioExample1">Yes</label>
+                                                    
+                                                </div>
+                                         </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <label class="col-lg-3 control-label" for="textArea2">Correspondence Address</label>
                                         <div class="col-lg-8">
-                                            <textarea class="form-control" id="caddress" rows="3" name='caddress'></textarea>
+                                            <textarea class="form-control" id="caddress" rows="3" name='caddress'><?php echo $correspondence_addr ?></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-lg-3 control-label">Postcode</label>
                                         <div class="col-lg-3">
-                                            <input type="text" id="cpostcode" name='cpostcode' class="form-control" >
+                                            <input type="text" id="cpostcode" name='cpostcode' class="form-control" value="<?php echo $correspondence_postcode ?>">
                                         </div>
                                     
                                         <label class="col-lg-2 control-label">City</label>
                                         <div class="col-lg-3">
-                                            <input type="text" id="ccity" name='ccity' class="form-control" >
+                                            <input type="text" id="ccity" name='ccity' class="form-control" value="<?php echo $correspondence_city ?>">
                                         </div>
                                     </div>     
 
@@ -468,8 +502,9 @@
                                         <label class="col-lg-3 control-label">State</label>
                                         <div class="col-lg-3">
                                             <label class="field select">
-                                                        <select id="cstate" name="cstate" class="form-control">
-                                                            <option value="">--State</option>
+                                                            <select id="cstate" name="cstate" class="form-control">
+
+                                                            <option value="<?php echo $correspondence_state?>"><?php echo $correspondence_state?></option>
                                                             <option value="Wilayah Persekutuan">Wilayah Persekutuan</option>
                                                             <option value="Selangor">Selangor</option>
                                                             <option value="Pahang">Pahang</option>
@@ -492,7 +527,7 @@
                                         <label class="col-lg-2 control-label">Country</label>
                                         <div class="col-lg-4">
                                             <label class="field select">
-                                                        <select id="ccountry" name="ccountry" class="form-control">
+                                                        <select id="ccountry" name="ccountry" class="form-control"><?php echo $correspondence_country ?>
                                                             <option value="">Country...</option>
                                                             <option value="Afganistan">Afghanistan</option>
                                                             <option value="Albania">Albania</option>
@@ -750,7 +785,7 @@
                                     <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Email</label>
                                         <div class="col-lg-8">
-                                            <input type="text" id="email" name="email" class="form-control">
+                                            <input type="text" id="email" name="email" class="form-control" value="<?php echo $email?>">
                                         </div>
                                     </div>
 
@@ -760,11 +795,11 @@
                                             <div class="form-group">
                                                 <label for="inputStandard" class="col-lg-2 control-label">Mobile</label>
                                                 <div class="col-lg-4">
-                                                    <input type="text" id="telnum" name="telnum" class="form-control" placeholder="">
+                                                    <input type="text" id="telnum" name="telnum" class="form-control" placeholder="" value="<?php echo $no_tel ?>">
                                                 </div>
                                                 <label for="inputStandard" class="col-lg-2 control-label">Home/Office</label>
                                                 <div class="col-lg-4">
-                                                    <input type="text" id="homeoffice" name="homeoffice" class="form-control" placeholder="">
+                                                    <input type="text" id="homeoffice" name="homeoffice" class="form-control" placeholder="" value="<?php echo $home_office ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -789,21 +824,43 @@
                                         <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Staff Number</label>
                                         <div class="col-lg-8">
-                                            <input type="text" id="staff_num" name="staff_num"class="form-control">
+                                            <input type="text" id="staff_num" name="staff_num"class="form-control" value="N/A">
                                         </div>
                                         </div>
 
                                         <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Department</label>
                                         <div class="col-lg-8">
-                                            <input type="text" id="department" name="department" class="form-control">
+                                            <input type="text" id="department" name="department" class="form-control" value="N/A">
                                         </div>
                                         </div>
                                     
                                         <div class="form-group">
                                         <label for="inputStandard" class="col-lg-3 control-label">Campus</label>
                                         <div class="col-lg-8">
-                                            <input type="text" id="campus" name="campus" class="form-control">
+                                            <select id="campus" name="campus" class="form-control">
+                                                <option value="N/A">N/A</option>
+                                                <option value="A">SERI ISKANDAR</option>
+                                                <option value="A4">TAPAH</option>
+                                                <option value="B">SHAH ALAM</option>
+                                                <option value="C">JENGKA</option>
+                                                <option value="C3">RAUB</option>
+                                                <option value="D">MACHANG</option>
+                                                <option value="D2">KOTA BHARU</option>
+                                                <option value="J">SEGAMAT</option>
+                                                <option value="K">SUNGAI PETANI</option>
+                                                <option value="M">ALOR GAJAH</option>
+                                                <option value="M3">JASIN</option>
+                                                <option value="N">KUALA PILAH</option>
+                                                <option value="N4">SEREMBAN 3</option>        
+                                                <option value="P2">BERTAM</option>
+                                                <option value="Q">SAMARAHAN</option>
+                                                <option value="Q5">SAMARAHAN 2</option>
+                                                <option value="R">ARAU</option>
+                                                <option value="S">KOTA KINABALU</option>
+                                                <option value="T">DUNGUN</option>
+                                                <option value="T5">KUALA TERENGGANU</option>
+                                            </select>
                                         </div>
                                     </div>
                                     </div>
@@ -811,11 +868,11 @@
                                     <div class="form-group">
                                     <div class="col-lg-5"></div>
                                     <div class="col-lg-2">
-                                        <button type="submit" class="btn btn-rounded btn-danger btn-block" name="update" id="update" value="Update">SAVE</button>
+                                        <button type="submit" class="btn btn-rounded btn-alert btn-block" name="update" id="update" value="Update">SAVE</button>
                                     </div>
                                     
                                     <div class="col-lg-2">
-                                        <a href ="?content=2"><button type="button" class="btn btn-rounded btn-danger btn-block" >NEXT</button></a>
+                                        <a href ="?content=2"><button type="button" class="btn btn-rounded btn-alert btn-block" >NEXT</button></a>
                                     </div>
 
                                     <div class="col-lg-5"></div>

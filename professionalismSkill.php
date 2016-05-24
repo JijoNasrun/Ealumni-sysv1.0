@@ -1,15 +1,3 @@
-<script type="text/javascript">
-        function getSkillDescription(val) {
-        $.ajax({
-        type: "POST",
-        url: "get_skilldescription.php",
-        data:'skill_id='+val,
-        success: function(data){
-            $("#skilldes").html(data);
-        }
-        });
-       }
-     </script>
 <?php 
  function runQuery($query) {
         $result = mysql_query($query);
@@ -25,6 +13,9 @@
         $query = "SELECT * FROM skill_category";
         $results = runQuery($query);
 
+        
+
+
          if(isset($_POST['update'])){
 
             $skillcat =$_POST['skillcat'];
@@ -37,7 +28,7 @@
                     $certexp1 = $certexp[$i];
                     
 
-                    $retval = mysql_query("INSERT INTO professionalism (no_kp,SkillID,certexp,skilldes) VALUES('$kp','$skillcat1','$certexp1','$skilldes1')");
+                    $retval = mysql_query("INSERT INTO professionalism (no_kp,SkillID,certexp) VALUES('$kp','$skillcat1','$certexp1')");
                     if(! $retval )
                         {
                            die('Could not update data: ' . mysql_error());
@@ -56,8 +47,6 @@
          
 ?>
 
-
-
             <!-- Begin: Content -->
             <div id="content" class="animated fadeIn">
                 <div class="row">
@@ -74,33 +63,23 @@
                                         <label for="inputStandard" class="control-label">Professional Skill</label><p>
                                     <div class="row">   
                                         <!-- .section-divider -->
-                                        <div class="col-xs-8">
-                                        <div class="col-xs-2">
-                                            <button type="button" value="Add Passenger" onClick="addRow('dataTable')" 
-                                            class="btn btn-rounded btn-danger btn-block">Add</button>
-                                        </div>
-                                        <div class="col-xs-3">
-                                            <button type="button" value="Remove Passenger" onClick="deleteRow('dataTable')"
-                                            class="btn btn-rounded btn-danger btn-block">Remove</button>
-                                        </div>
-                                            <p>(Remove only checked item)</p>
-                                        </div>
+                
                                        <p>
                                          <table id="dataTable"  class="table table-striped table-hover" cellspacing="0" width="100%">
                                               <tbody> 
-                                                <tr>
+                                                <tr id="row0">
                                                   <p>
-                                                    <td><input type="checkbox" required="required" name="chk[]" unchecked="" /></td>
+                                                    
                                                     <td>
                                                         <div class="form-group">
                                                             <label class="col-lg-3 control-label">Skill Category</label>
                                                             <div class="col-lg-8">
                                                                 <label class="field select">
-                                                                    <select id="skillcat" name="skillcat[]" class="form-control" onChange="getSkillDescription(this.value)">
+                                                                    <select id="skillcat" name="skillcat[]" class="form-control" onChange="getSkillDescription(this.value)"  >
                                                                         <option value ="">SELECT SKILL CATEGORY</option>
                                                                     <?php 
                                                                             foreach($results as $displayCategory) {
-                                                                                ?>
+                                                                    ?>
                                                                              <option value="<?php echo $displayCategory["SkillCatID"]; ?>"><?php echo $displayCategory["SkillCatName"]; ?></option>
 
                                                                     <?php }         
@@ -113,10 +92,70 @@
                                                         <div class="form-group">
                                                             <label class="col-lg-3 control-label">Skill Description</label>
                                                             <div class="col-lg-8">
-                                                                <label class="field select">
+                                                                <label class="field select">                                                                
                                                                     <select id="skilldes" name="skilldes[]" class="form-control">
-                                                                    
+                                                                        <option value="" disabled>--CISCO--</option>
+                                                                        <option value="1">CCNA</option>
+                                                                        <option value="2">CCNP</option>
+                                                                        <option value="3">CCDE</option>
+                                                                        <option value="4">CCIE</option>
+                                                                        <option value="5">CCAR</option>
+                                                                        <option value="" disabled>--DATABASE(ORACALE)--</option>
+                                                                        <option value="6">ORACLE APPLICATION CERTIFICATE</option>
+                                                                        <option value="7">ORACLE DATABSE CERTIFICATE</option>
+                                                                        <option value="" disabled>--3D MODELLING/DESIGN--</option>
+                                                                        <option value="8">AUTODESK BUILDING INFORMATION MODELLING</option>
+                                                                        <option value="9">ADOBE</option>
+                                                                        <option value=""disabled>--BUSINESS ANALYTICS--</option>
+                                                                        <option value="10">SAS</option>
+                                                                        <option value=""disabled>--BUSINESS ANALYSIS--</option>
+                                                                        <option value="11">INTERNATIONAL INSTITUTE OF BUSINESS ANALYSIS</option>
+                                                                        <option value=""disabled>--DATA SCIENCE/BIG DATA--</option>
+                                                                        <option value="12">EMC</option>
+                                                                        <option value="13">CLOUDERA</option>
+                                                                        <option value="14">RAPIDMINER</option>
+                                                                        <option value="15">HORTONWORKS</option>
+                                                                        <option value="" disabled>--EMBEDDED SYSTEM--</option>
+                                                                        <option value="16">NATIONAL INSTRUMENTS</option>
+                                                                        <option value="17">SYSTEM DESIGN</option>
+                                                                        <option value="18">IC DESIGN</option>
+                                                                        <option value="19">ARM</option>
+                                                                        <option value="" disabled>--ENTERPRISE RESOURCE PLANNING--</option>
+                                                                        <option value="20">SAP</option>
+                                                                        <option value="" disabled>--GLOBAL BUSINESS SERVICE--</option>
+                                                                        <option value="21">IAOP</option>
+                                                                        <option value="" disabled>--IT ARCHITECTURE--</option>
+                                                                        <option value="22">IASA</option>
+                                                                        <option value="23">THE OPEN GROUP</option>
+                                                                        <option value="" disabled>--IT SERVICE MANAGEMENT--</option>
+                                                                        <option value="24">SERVICE DESK INSTITUTE</option>
+                                                                        <option value="25">AXELOS/APMG/BCS/EXIN/PEOPLECERT</option>
+                                                                        <option value="26">PEOPLECERT</option>
+                                                                        <option value="27">APMG</option>
+                                                                        <option value="" disabled>--MOBILE DEVELOPMENT--</option>
+                                                                        <option value="28">ITRAIN</option>
+                                                                        <option value="" disabled>--PROJECT DEVELOPMENT--</option>
+                                                                        <option value="29">PROJECT MANAGEMENT INSTITUTE</option>
+                                                                        <option value="30">SCRUM ALLIANCE</option>
+                                                                        <option value="31">PRINCE2(APMG/PEOPLECERT)</option>
+                                                                        <option value="" disabled>--PROBLEM SOLVING--</option>
+                                                                        <option value="32">TRIZ</option>
+                                                                        <option value="" disabled>--NETWORKING--</option>
+                                                                        <option value="33">HUAWEI</option>
+                                                                        <option value="34">JUNIPER</option>
+                                                                        <option value="" disabled>--SECURITY--</option>
+                                                                        <option value="35">COMPTIA</option>
+                                                                        <option value="36">MILE2</option>
+                                                                        <option value=""disabled>--SERVER/CLOUD/SHAREPOINT--</option>
+                                                                        <option value="37">MICROSOFT</option>
+                                                                        <option value="" disabled>--SYSTEM ADMINISTRATOR--</option>
+                                                                        <option value="38">RED HAT</option>
+                                                                        <option value="" disabled>--VIRTUALIZATION--</option>
+                                                                        <option value="39">VMWARE</option>
+
+                                                                        
                                                                     </select>
+                                                                   
                                                                     <i class="arrow"></i>
                                                                 </label>
                                                             </div>
@@ -137,11 +176,11 @@
                                     <div class="form-group">
                                     <div class="col-lg-5"></div>
                                     <div class="col-lg-2">
-                                        <button type="submit" class="btn btn-rounded btn-danger btn-block"  name="update" id="update">EDIT</button>
+                                        <button type="submit" class="btn btn-rounded btn-alert btn-block"  name="update" id="update">SAVE</button>
                                     </div>
 
                                     <div class="col-lg-2">
-                                        <a href="?content=5"><button type="button" class="btn btn-rounded btn-danger btn-block">NEXT</button></a>
+                                        <a href="?content=5"><button type="button" class="btn btn-rounded btn-alert btn-block">NEXT</button></a>
                                     </div>
 
                                     <div class="col-lg-5"></div>
@@ -149,7 +188,44 @@
                                 </form>
                             </div>
                         </div>
+                        <center>
+                        <table id="table1">
+                            <tr>
+                                <td>SKILL ID</td><td>&nbsp</td>
+                                <td>SKILL DESCRIPTION</td><td>&nbsp</td>
+                                <td>EXPERIENCE</td><td>&nbsp</td>
+                            </tr>
+                                <?php 
+                                $skillQuery = mysql_query("SELECT * FROM professionalism WHERE no_kp = '$kp'");
+                                
+                                
+                                while($skillRow=mysql_fetch_array($skillQuery)){
+                                    $nqid=$skillRow['professionalID'];
+                                    $id = $skillRow['skillID'];
+                                    $description = $skillRow['skilldes'];
 
+                                    $skillID = mysql_query("SELECT * FROM skill_category where SkillCatID = '$id'");
+                                    $skillIDRow = mysql_fetch_array($skillID);
+                                    $skillcategory = $skillIDRow['SkillCatName'];
+                                    
+                                    $descQuery = mysql_query("SELECT * FROM skill where skillID = '$description'");
+                                    $descRow = mysql_fetch_array($descQuery);
+                                    $desc = $descRow['SkillDescription'];
+                                    
+
+
+                                
+                            ?>
+                                <td><?php echo $skillcategory?></td><td>&nbsp</td>
+                                <td><?php echo $desc?></td><td>&nbsp</td>
+                                <td><?php echo $skillRow['certexp'] ?></td><td>&nbsp</td>
+                                
+                                <td><a href="update_professionalism.php?id=<?=$nqid?>">Update</a></td>
+                                </tr>
+
+                                                            <?php
+                                                                } ?>
+                        </table></center>
                     </div>
 
                 </div>
@@ -157,8 +233,13 @@
             </div>
             <!-- End: Content -->
 
+        <link href="dist/css/select2.min.css" rel="stylesheet" />
+        <script src="dist/js/select2.min.js"></script>
         <script type="text/javascript">
         jQuery(document).ready(function() {
+
+             // $("#skilldes").select2();
+                                                                   
 
             // "use strict";
 
@@ -288,10 +369,13 @@
             var rowCount = table.rows.length;
             if(rowCount < 20){                           // limit the user from creating fields more than your limits
                 var row = table.insertRow(rowCount);
+
                 var colCount = table.rows[0].cells.length;
                 for(var i=0; i<colCount; i++) {
                     var newcell = row.insertCell(i);
                     newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+                    row.id = "row" + rowCount;
+                    row.class = "row" + rowCount;
                 }
             }else{
                  alert("Maximum is 20.");
@@ -317,8 +401,30 @@
             }
         };
 
+
+        function getSkillDescription(val) {
+
+            var $this = $('#skilldes').closest('tr');
+            var trid = $this.attr('id');
+            //alert("TR ID " + trid);
+
+            $.ajax({cache:false,
+                type: "POST",
+                url: "get_skilldescription.php",
+                data:'skill_id='+val,
+                success: function(data){
+
+                    $("#"+trid+"#skilldes").append(data);
+                }
+            });
+       }
+
+
+
         //any time the amount changes
         $(document).ready(function() {
+
+         
             $('input[name=BX_QTY],input[name=BX_UnitPrice]').change(function(e) {
                 var total = 0;
                 var $row = $(this).parent();

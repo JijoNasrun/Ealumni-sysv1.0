@@ -80,9 +80,10 @@
                                         <div class="col-lg-8">
                                             <label class="field select">
                                                         <select id="status" name="status" class="form-control">
-                                                            <option value="Active">Active</option>
-                                                            <option value="Inactive">Inactive</option>
-                                                            <option value="Inactive">Furthering Study</option>
+                                                            <option value="Employed">Employed</option>
+                                                            <option value="Unemployed">Unemployed</option>
+                                                            <option value="Self-employed">Self-Employed</option>
+                                                            <option value="Furthering Study">Further Study</option>
                                                         </select>
                                                         <i class="arrow"></i>
                                                     </label>
@@ -101,8 +102,8 @@
                                         <div class="col-lg-8">
                                             <label class="field select">
                                                         <select id="relate" name="relate" class="form-control">
-                                                            <option value="Related">Related</option>
-                                                            <option value="Not Related">Not Related</option>
+                                                            <option value="Related">YES</option>
+                                                            <option value="Not Related">NO</option>
                                                         </select>
                                                         <i class="arrow"></i>
                                                     </label>
@@ -110,19 +111,10 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-lg-3 control-label">Year Start</label>
+                                        <label class="col-lg-3 control-label">Starting Year</label>
                                         <div class="col-lg-2">
                                             <label class="field select">
                                                         <select id="year" name="year" class="form-control">
-                                                            <option value="2025">2025</option>
-                                                            <option value="2024">2024</option>
-                                                            <option value="2023">2023</option>
-                                                            <option value="2022">2022</option>
-                                                            <option value="2021">2021</option>
-                                                            <option value="2020">2020</option>
-                                                            <option value="2019">2019</option>
-                                                            <option value="2018">2018</option>
-                                                            <option value="2017">2017</option>
                                                             <option value="2016">2016</option>
                                                             <option value="2015">2015</option>
                                                             <option value="2014">2014</option>
@@ -618,11 +610,11 @@
                                     <div class="form-group">
                                     <div class="col-lg-5"></div>
                                     <div class="col-lg-2">
-                                        <button type="submit" class="btn btn-rounded btn-danger btn-block" name="update" id="update" value="Update">EDIT</button>
+                                        <button type="submit" class="btn btn-rounded btn-alert btn-block" name="update" id="update" value="Update">SAVE</button>
                                     </div>
                                    
                                     <div class="col-lg-2">
-                                        <a href="?content=4"><button type="button" class="btn btn-rounded btn-danger btn-block">NEXT</button></a>
+                                        <a href="?content=4"><button type="button" class="btn btn-rounded btn-alert btn-block">NEXT</button></a>
                                     </div>
 
                                     <div class="col-lg-5"></div>

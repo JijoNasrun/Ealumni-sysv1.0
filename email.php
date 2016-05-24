@@ -1,10 +1,22 @@
+<?php  
+include("include/dbconn.php");
+
+
+function runQuery($query) {
+        $result = mysql_query($query);
+        while($row=mysql_fetch_assoc($result)) {
+            $resultset[] = $row;
+        }       
+        if(!empty($resultset))
+            return $resultset;
+    } ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Simple</title>
+<title>E-Alumni FSKM</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico">
+
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all">
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
@@ -22,7 +34,19 @@
     <!--webfonts-->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text.css'/>
     <!--//webfonts-->
-
+   <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function getProgram(val) {
+        $.ajax({
+        type: "POST",
+        url: "get_program.php",
+        data:'level_id='+val,
+        success: function(data){
+            $("#program").html(data);
+        }
+        });
+       }
+     </script>
 </head>
 <body>
 <div id="wrapper">
@@ -43,16 +67,34 @@
             <input type="text" placeholder="IC" name="IC" required/>
           </p>
                   <p>
-            <label for = "password">Password :</label>
-            <input type="password" placeholder="Password" name="password" required/>
+            <label>Name :</label>
+            <input type="text" placeholder="Name" name="name" required/>
           </p>
                 <p>
             <label>E-mail :</label>
             <input type="text" name="mail" placeholder="Email"/>
           </p>
+          <p>
+            <label>Level :</label>
+            <select id="level" name="level" class="form-control" onChange="getProgram(this.value);">
+                                                                    <?php
+                                                                    $query ="SELECT * FROM level";
+                                                                    $results = runQuery($query);
+                                                                        foreach($results as $display_level) {
+                                                                        ?>
+                                                                        <option value="<?php echo $display_level["LevelID"]; ?>"><?php echo $display_level["LevelName"]; ?></option>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </select>
+                                                                    <i class="arrow"></i>
+          </p>
                  <p>
             <label>Programme Code :</label>
-            <input type="text" name="program" placeholder="Program"/>
+            <select id="program" name="program" class="form-control">
+                                                                
+                                                                </select>
+                                                                <i class="arrow"></i>
           </p>
                  <p>
             <label>Year Graduate :</label>
