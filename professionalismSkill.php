@@ -28,7 +28,7 @@
                     $certexp1 = $certexp[$i];
                     
 
-                    $retval = mysql_query("INSERT INTO professionalism (no_kp,SkillID,certexp,skilldes) VALUES('$kp','$skillcat1','$certexp1','$skilldes1')");
+                    $retval = mysql_query("INSERT INTO professionalism (no_kp,SkillID,certexp) VALUES('$kp','$skillcat1','$certexp1')");
                     if(! $retval )
                         {
                            die('Could not update data: ' . mysql_error());
